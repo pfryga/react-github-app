@@ -10,16 +10,14 @@ export default React.createClass({
     },
 
     handleChange () {
-        let valueFrom = this.refs.inputFrom.getValue();
-        let valueTo = this.refs.inputTo.getValue();
-        this.props.onChange(value)
+
     },
 
     render() {
         return (
             <div>
-                <Input type="text" ref="inputFrom"></Input>
-                <Input type="text" ref="inputTo"></Input>
+                <Input type="text" placeholder="Stars from" ref="inputFrom"></Input>
+                <Input type="text" placeholder="Stars to" ref="inputTo"></Input>
             </div>
         );
     }

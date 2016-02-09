@@ -3,6 +3,7 @@ import React from 'react';
 import Search from './search';
 import Results from './results';
 import LangFilter from './lang-filter';
+import StarsFilter from './stars-filter';
 
 import repositories from '../api/repositories';
 
@@ -30,6 +31,7 @@ export default React.createClass({
                 <h1>allegro.de</h1>
                 <Search onSubmit={this.handleSubmit} />
                 <LangFilter onChange={this.handleFilterChange} />
+                <StarsFilter />
                 <Results query={this.state.query} language={this.state.language} />
             </div>
         );
