@@ -13,7 +13,9 @@ export default React.createClass({
     getInitialState () {
         return {
             query: '',
-            language: null
+            language: null,
+            minStars: undefined,
+            maxStars: undefined
         }
     },
 
@@ -25,14 +27,22 @@ export default React.createClass({
         this.setState({ query });
     },
 
+    handleFromInputChange(minStars) {
+        this.setState({ minStars });
+    },
+
+    handleMaxInputChange(maxStars) {
+        this.setState({ maxStars });
+    },
+
     render() {
         return (
             <div className="app">
                 <h1>allegro.de</h1>
                 <Search onSubmit={this.handleSubmit} />
                 <LangFilter onChange={this.handleFilterChange} />
-                <StarsFilter />
-                <Results query={this.state.query} language={this.state.language} />
+                <StarsFilter onChange={this.handleFromInputChange} onChangeMax={this.handleMaxInputChange} />
+                <Results query={this.state.query} language={this.state.language} minStars={this.state.minStars} maxStars={this.state.maxStars} />
             </div>
         );
     }

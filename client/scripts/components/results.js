@@ -8,7 +8,9 @@ export default React.createClass({
 
     propTypes: {
         query: React.PropTypes.string,
-        language: React.PropTypes.string
+        language: React.PropTypes.string,
+        minStars: React.PropTypes.string,
+        maxStars: React.PropTypes.string
     },
 
     getInitialState() {
@@ -21,6 +23,7 @@ export default React.createClass({
         repositories(nextProps.query)
             .withLanguage(nextProps.language)
             .withSort('stars', 'desc')
+            .withStars(nextProps.minStars, nextProps.maxStars)
             .end()
             .then(responseBody => {
                 let results = responseBody.items.map(item => {

@@ -5,19 +5,24 @@ export default React.createClass({
     displayName: 'StarsFilter',
 
     propTypes: {
-        starsFrom: React.PropTypes.string,
-        starsTo: React.PropTypes.string
+        onChange: React.PropTypes.func.isRequired
     },
 
-    handleChange () {
+    handleChangeFromInput () {
+        let value = this.refs.input.getValue();
+        this.props.onChange(value);
+    },
 
+    handleChangeMaxInput () {
+        let value = this.refs.inp.getValue();
+        this.props.onChangeMax(value);
     },
 
     render() {
         return (
             <div>
-                <Input type="text" placeholder="Stars from" ref="inputFrom"></Input>
-                <Input type="text" placeholder="Stars to" ref="inputTo"></Input>
+                <Input type="text" placeholder="Stars from" onChange={this.handleChangeFromInput} ref="input" />
+                <Input type="text" placeholder="Stars to" onChange={this.handleChangeMaxInput} ref="inp" />
             </div>
         );
     }
